@@ -9,5 +9,30 @@
 #include "logic.h"
 
 int count_rows_with_more_positive_values(int** matrix, int n, int m) {
-	return 0;
+
+	if (n <= 0 || m <= 0 || matrix == nullptr) {
+		return 0;
+	}
+
+	int countRow = 0;
+	int countPositiveElements;
+
+	for (int i = 0; i < n; i++)
+	{
+		countPositiveElements = 0;
+
+		for (int j = 0; j < m; j++)
+		{
+			if (matrix[i][j] > 0) {
+				countPositiveElements++;
+			}
+			if (countPositiveElements > m - countPositiveElements) {
+				countRow++;
+				break;
+			}
+		}
+
+	}
+
+	return countRow;
 }
