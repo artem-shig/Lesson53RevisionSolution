@@ -9,5 +9,12 @@
 #include "logic.h"
 
 int get_min_maximum(int** matrix, int n, int m) {
+
+	if (n <= 0 || m <= 0 || matrix == nullptr) {
+		return 0;
+	}
+
+
+
 	return 0;
 }
