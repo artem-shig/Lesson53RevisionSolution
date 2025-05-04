@@ -7,5 +7,22 @@
 #include "logic.h"
 
 int sum_main_and_second_diagonales_elements(int** matrix, int n) {
-	return 0;
+
+    if (n <= 0 || matrix == nullptr) {
+        return 0;
+    }
+
+    int sum = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        sum += matrix[i][i];
+        sum += matrix[i][n - 1 - i];
+    }
+
+    if (n % 2 != 0) {
+        sum -= matrix[n / 2][n / 2];
+    }
+
+	return sum;
 }
