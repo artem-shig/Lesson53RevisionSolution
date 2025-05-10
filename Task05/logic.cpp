@@ -98,5 +98,6 @@ void get_last_local_minimum(int** matrix, int n, int m, int* ii, int* jj) {
 	}
 	else {
 		// ...
+
 	}
 }
