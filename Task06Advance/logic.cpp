@@ -7,6 +7,7 @@
 // минимальным среди всех локальных максимумов. 
 
 #include "logic.h"
+#include <iostream>
 
 int get_min_maximum(int** matrix, int n, int m) {
 
@@ -14,7 +15,37 @@ int get_min_maximum(int** matrix, int n, int m) {
 		return 0;
 	}
 
+	int minMaximum = matrix[0][0];
+	int localMaximum = matrix[0][0];
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m - 1; j++)
+		{
+			if (j == 0) {
+				if (matrix[i][j] > matrix[i][j + 1]) {
+					localMaximum = matrix[i][j];
+				}
+			}
+			else if (j > 0 && j < m - 1) {
+				if (matrix[i][j] > matrix[i][j + 1] && matrix[i][j] > matrix[i][j - 1]) {
+					localMaximum = matrix[i][j];
+				}
+			}
+			else if (j == m - 1) {
+				if (matrix[i][j] > matrix[i][j - 1]) {
+					localMaximum = matrix[i][j];
+				}
+			}
+		}
+		if (minMaximum > localMaximum) {
+			int t = localMaximum;
+			localMaximum = minMaximum;
+			minMaximum = t;
+		}
+
+	}
 
 
-	return 0;
+	return minMaximum;
 }
