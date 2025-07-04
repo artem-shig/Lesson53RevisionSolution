@@ -97,7 +97,59 @@ void get_last_local_minimum(int** matrix, int n, int m, int* ii, int* jj) {
 		}
 	}
 	else {
-		// ...
-
+		if (n == 1) {
+			for (int j = m - 1; j >= 0; j--)
+			{
+				if (j == m - 1) {
+					if (matrix[0][j] < matrix[0][j - 1]) {
+						*ii = 1;
+						*jj = j + 1;
+						return;
+					}
+				}
+				else if (j > 0 && j < m - 1) {
+					if (matrix[0][j] < matrix[0][j - 1]
+						&& matrix[0][j] < matrix[0][j + 1]) {
+						*ii = 1;
+						*jj = j + 1;
+						return;
+					}
+				}
+				else if (j == 0){
+					if (matrix[0][0] < matrix[0][j + 1]) {
+						*ii = 1;
+						*jj = 1;
+						return;
+					}
+				}
+			}
+		}
+		else if (m == 1) {
+			for (int i = n - 1; i >= 0; i--)
+			{
+				if (i == n - 1) {
+					if (matrix[i][0] < matrix[i - 1][0]) {
+						*ii = i + 1;
+						*jj = 1;
+						return;
+					}
+				}
+				else if (i > 0 && i < n - 1) {
+					if (matrix[i][0] < matrix[i - 1][0]
+						&& matrix[i][0] < matrix[i + 1][0]) {
+						*ii = i + 1;
+						*jj = 1;
+						return;
+					}
+				}
+				else if (i == 0) {
+					if (matrix[0][0] < matrix[i + 1][0]) {
+						*ii = 1;
+						*jj = 1;
+						return;
+					}
+				}
+			}
+		}
 	}
 }
